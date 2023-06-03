@@ -1,0 +1,47 @@
+:root {
+  /* colors */
+  --primary-color: #4263EB;
+  --primary-color-dark: #364FC7;
+  --color-gray-0: #0A0C0D;
+  --color-gray-1: #212529;
+  --color-gray-2: #495057;
+  --color-gray-3: #868E96;
+  --color-gray-4: #DEE2E6;
+  --color-gray-5: #F8F9FA;
+  --color-gray-opac: rgba(33, 37, 41, 0.5);
+  --color-white: #FFF;
+  --color-feedback: #D7443E;
+  
+  /* font */
+  --font-family-custom: 'Inter', sans-serif;
+
+  --font-size-title1: 1.75rem;
+  --font-size-title2: 1.25rem;
+  --font-size-text1: 1rem;
+  --font-size-text2: 0.875rem;
+  --font-size-text3: 0.75rem;
+
+  --font-weight-title1: 700;
+  --font-weight-title2: 600;
+  --font-weight-texts: 400;
+
+  --line-height-title1: 2.5rem;
+  --line-height-title2: 1.5rem;
+  --line-height-text1: 1.75rem;
+  --line-height-texts: 1rem;
+
+
+}
+html {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-custom);
+
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
