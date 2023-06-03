@@ -35,13 +35,5 @@
 html {
   width: 100%;
   box-sizing: border-box;
-}
-
-body {
   font-family: var(--font-family-custom);
-
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
 }

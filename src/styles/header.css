@@ -1,0 +1,30 @@
+.header {
+  background-color: var(--color-gray-1);
+  height: 8vh;
+  width: 100%;
+  padding: 0 0.9375rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.header__log-off {
+  text-decoration: none;
+}
+
+.header__logo,
+.header__log-off {
+  color: var(--color-white);
+}
+
+@media screen and (min-width: 1024px) {
+  .header {
+    padding: 0 5.625rem;
+  }
+}

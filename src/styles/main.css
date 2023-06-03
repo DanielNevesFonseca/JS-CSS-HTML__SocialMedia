@@ -1,0 +1,211 @@
+/*===================== main ======================== */
+
+.main {
+  margin-top: calc(8vh + 1.75rem);
+  max-width: 100%;
+  height: auto;
+  padding: 1.5rem;
+  gap: 2.25rem;
+}
+
+/* =============== info-user section ===================== */
+.main__info-user {
+  height: 3.75rem;
+  width: 12.5rem;
+  flex-wrap: wrap;
+  justify-content: first baseline;
+  gap: 15px;
+}
+
+.main__info-user>p {
+  color: var(--color-gray-3);
+}
+
+.main__user-image {
+  width: 3.75rem;
+  display: block;
+}
+
+/* ================ post-container section  ====================*/
+
+.main__write-post {
+  height: 12.875rem;
+}
+
+.post-container__form {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  gap: 1rem;
+
+  flex-wrap: wrap;
+}
+
+.post-container__title,
+.post-container__text {
+  border: 1px solid var(--color-gray-4);
+  padding: 5px 10px;
+  color: var(--color-gray-2);
+  max-width: 100%;
+}
+
+.post-container__title {
+  height: 20%;
+}
+
+.post-container__text {
+  height: 50%;
+  justify-self: flex-start;
+}
+
+.post-container__btn {
+  width: 5rem;
+  padding: 0.3125rem 0.625rem;
+  background-color: var(--color-gray-4);
+  color: var(--color-gray-3);
+  align-self: flex-end;
+  border-radius: 5px;
+
+}
+
+.post-container__btn:hover {
+  background-color: var(--primary-color);
+  color: var(--color-white);
+
+}
+
+/* ==================== suggest-users section ================================ */
+
+.main__suggest-users {
+  max-width: 100%;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.suggest-users__container {
+  max-width: 100%;
+  height: 7rem;
+  overflow-x: scroll;
+  flex-wrap: wrap;
+  gap: 20%;
+}
+
+.suggest-users__container::before {
+  content: "";
+  position: absolute;
+  top: 45px;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.9));
+  z-index: 1;
+}
+
+
+.suggest-users__item {
+  max-height: 4.75rem;
+  width: 12.5rem;
+  
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.suggest-users__item:last-child {
+  margin-right: 45% ;
+}
+
+.suggest-users__img {
+  width: 3.75rem;
+  border-radius: 50%;
+  border: 3px solid var(--color-gray-3);
+}
+
+.suggest-users__button {
+  width: max-content;
+  padding: 0.3125rem 0.625rem;
+  position: absolute;
+  bottom: -1.25rem;
+  left: 0;
+  border: 1px solid var(--color-gray-2);
+  color: var(--color-gray-2);
+  z-index: 2;
+}
+
+.suggest-users__button:hover {
+  background-color: var(--primary-color);
+  color: var(--color-white);
+}
+
+.following {
+  background-color: var(--primary-color-dark);
+  color: var(--color-gray-4);
+}
+
+/* ===================== posts Section ======================== */
+
+.main__posts {
+  max-width: 100%;
+  gap: 0.875rem;
+}
+
+.main__posts>h1 {
+  margin-top: 2.5rem;
+}
+
+.main__posts .suggest-users__item {
+  margin-top: 3.125rem;
+}
+
+.posts-container,
+.posts-container__posts,
+.posts-container__article {
+  gap: 2.25rem;
+}
+
+.posts-container__btn-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.posts-container__text {
+  color: var(--color-gray-3);
+}
+
+.posts-container__btn {
+  padding: 0.6125rem 0.75rem;
+  width: 6.25rem;
+  display: inline;
+  margin-right: 30px;
+  background-color: var(--color-gray-2);
+  border-radius: 5px;
+  color: var(--color-white);
+}
+
+.posts-container__btn:hover {
+  background-color: var(--primary-color);
+}
+
+.posts-container__img {
+  width: 25px;
+  display: inline;
+  cursor: pointer;
+}
+
+.posts-container__likes {
+  color: var(--color-gray-3);
+}
+
+@media screen and (min-width: 1024px) {
+  .main {
+    width: 60%;
+  }
+
+  .suggest-users__container::before,
+  .main__suggest-users {
+    display: none;
+  }
+  
+}
