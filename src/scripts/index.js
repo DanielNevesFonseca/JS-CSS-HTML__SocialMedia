@@ -2,19 +2,6 @@ import { users } from "./database.js";
 import { posts } from "./database.js";
 import { suggestUsers } from "./database.js";
 
-
-function renderSuggestUsers(users) {
-  const usersList = document.querySelector('.suggest-users__container');
-  usersList.innerHTML = "";
-
-  for (let i = 0; i < users.length; i++) {
-    const user = users[i];
-    const userLi = createUserCard(user);
-    usersList.appendChild(userLi);
-  }
-}
-renderSuggestUsers(suggestUsers);
-
 function createUserCard(array) {
   const userItem = document.createElement('div');
   const userImg = document.createElement('img');
@@ -39,13 +26,106 @@ function createUserCard(array) {
   return userItem;
 }
 
+function createArticle(array) {
+  const post = document.createElement('article');
+  const title = document.createElement('h1');
+  const text = document.createElement('p');
 
-function renderPosts(posts) {
+  post.classList.add('posts-container__article')
+  title.classList.add('posts-container__title', 'title1');
+  text.classList.add('posts-container__text', 'text2');
+  
+  post.dataset.articleId = array.id;
+  title.innerText = array.title;
+  text.innerText = array.text;
+  
+  post.append(title, text);
+
+  return post;
+}
+
+function createButtons4Articles(array){
+  const buttonsSection = document.createElement('div');
+  const button = document.createElement('button');
+  const likeImg = document.createElement('img');
+  const likesQuantity = document.createElement('p');
+
+  buttonsSection.classList.add('posts-container__btn-container');
+  button.classList.add('posts-container__btn', 'text2');
+  likeImg.classList.add('posts-container__img');
+  likesQuantity.classList.add('posts-container__likes','text3');
+  button.dataset.buttonId = array.id;
+
+  button.innerText = "Abrir Post";
+  likeImg.src = '../src/assets/img/heart-like.jpg';
+  likeImg.alt = 'ícone de coração gostei.';
+  likesQuantity.innerText = array.likes;
+
+  buttonsSection.append(button, likeImg, likesQuantity);
+
+  return buttonsSection;
+}
+
+function createFollowingButtons(){
+  const followingButton = document.createElement('button');
+  
+  followingButton.innerText = 'Seguir';
+  followingButton.classList = 'suggest-users__button';
+
+  followingButton.addEventListener('click', function(event) {
+    followingButton.classList.toggle('following');
+    
+    if(followingButton.classList.contains('following')){
+      followingButton.innerText = 'Seguindo';
+    } else {
+      followingButton.innerText = 'Seguir';
+    }
+  });
+
+  return followingButton;
+}
+
+
+function renderMainUser(array){
+  const mainUser = document.querySelector('.main__info-user');
+  const user = createUserCard(array[0]);
+  mainUser.appendChild(user);
+}
+
+function renderSuggestUsers(array) {
+  const usersList = document.querySelector('.suggest-users__container');
+  usersList.innerHTML = "";
+
+  for (let i = 0; i < array.length; i++) {
+    const user = array[i];
+    const userDiv = createUserCard(user);
+    const followingButton = createFollowingButtons();
+
+    userDiv.appendChild(followingButton);
+    usersList.append(userDiv);
+  }
+}
+
+function renderAsideSuggestUsers(array) {
+  const usersList = document.querySelector('.aside .suggest-users__container');
+  usersList.innerHTML = "";
+
+  for (let i = 0; i < array.length; i++) {
+    const user = array[i];
+    const userDiv = createUserCard(user);
+    const followingButton = createFollowingButtons();
+
+    userDiv.appendChild(followingButton);
+    usersList.append(userDiv);
+  }
+}
+
+function renderPosts(array) {
   const postsList = document.querySelector('.posts-container');
   postsList.innerHTML = "";
   
-  for(let i = 0; i < posts.length; i++){
-    const post = posts[i];
+  for(let i = 0; i < array.length; i++){
+    const post = array[i];
 
     const postController = document.createElement('div');
     postController.classList.add('posts-container__posts');
@@ -58,49 +138,6 @@ function renderPosts(posts) {
     postsList.appendChild(postController);
   }
 }
-renderPosts(posts);
-
-function createArticle(posts) {
-  const post = document.createElement('article');
-  const title = document.createElement('h1');
-  const text = document.createElement('p');
-
-  post.classList.add('posts-container__article')
-  title.classList.add('posts-container__title', 'title1');
-  text.classList.add('posts-container__text', 'text2');
-  
-  post.dataset.articleId = posts.id;
-  title.innerText = posts.title;
-  text.innerText = posts.text;
-  
-  post.append(title, text);
-
-  return post;
-}
-
-
-function createButtons4Articles(posts){
-  const buttonsSection = document.createElement('div');
-  const button = document.createElement('button');
-  const likeImg = document.createElement('img');
-  const likesQuantity = document.createElement('p');
-
-  buttonsSection.classList.add('posts-container__btn-container');
-  button.classList.add('posts-container__btn', 'text2');
-  likeImg.classList.add('posts-container__img');
-  likesQuantity.classList.add('posts-container__likes','text3');
-  button.dataset.buttonId = posts.id;
-
-  button.innerText = "Abrir Post";
-  likeImg.src = '../src/assets/img/heart-like.svg';
-  likeImg.alt = 'ícone de coração gostei.';
-  likesQuantity.innerText = posts.likes;
-
-  buttonsSection.append(button, likeImg, likesQuantity);
-
-  return buttonsSection;
-}
-
 
 function closeModal(){
   const closeButton = document.querySelector('.modal-close-btn');
@@ -120,7 +157,6 @@ function createModalCloseButton() {
 
   modalContainer.appendChild(closeButton);
 }
-createModalCloseButton();
 
 function handlePostModal(array){
   const modalController = document.querySelector('.posts__modal-controller');
@@ -139,9 +175,9 @@ function handlePostModal(array){
 
       console.log(event.target.dataset.buttonId);
 
-      for(let j = 0; j < posts.length; j++) {
+      for(let j = 0; j < array.length; j++) {
         if(posts[i].id == event.target.dataset.buttonId){
-          postFound = posts[i];
+          postFound = array[i];
         }
       }
       console.log(postFound)
@@ -153,6 +189,9 @@ function handlePostModal(array){
     })
   }
 }
-handlePostModal(posts)
 
-
+renderMainUser(users);
+renderSuggestUsers(suggestUsers);
+renderAsideSuggestUsers(suggestUsers);
+renderPosts(posts);
+handlePostModal(posts);
