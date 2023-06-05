@@ -82,4 +82,5 @@ export const suggestUsers = [
     stack: "Fullstack Engineer",
     img: "./src/assets/img/user7.svg",
   },
+  
 ];

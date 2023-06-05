@@ -1,9 +1,9 @@
 body {
   width: 100%;
   height: auto;
-
   display: flex;
-  flex-direction: column;
+  flex-direction: column
+
 }
 
 .flex-column {
@@ -14,12 +14,14 @@ body {
 /* modalpost */
 
 .posts__modal-controller {
-  width: 70%;
-  margin: auto ;
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
   border: none;
   border-radius: 10px;
   padding: 0;
-  position: relative;
+  position: absolute;
+  top: 200px;
 }
 
 .posts__modal-container {
@@ -29,6 +31,7 @@ body {
   border-radius: 10px;
   padding: 2.5rem 0.9375rem;
   gap: 1.25rem;
+  overflow-y: scroll;
 }
 
 .modal-close-btn {
@@ -39,6 +42,10 @@ body {
   padding: 5px;
   border: none;
   background-color: transparent;
+}
+
+.modal-open {
+  overflow: hidden;
 }
 
 .posts__modal-controller::backdrop {
@@ -53,4 +60,9 @@ body {
     flex-direction: row;
     gap: 5%;
   }
+
+.posts__modal-controller {
+  width: 60%;
+}
+
 }
