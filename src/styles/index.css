@@ -29,7 +29,6 @@ body {
   border-radius: 10px;
   padding: 2.5rem 0.9375rem;
   gap: 1.25rem;
-  overflow-y: scroll;
   position: relative;
 }
 
@@ -50,9 +49,6 @@ body {
 .posts__modal-controller::backdrop {
   background-color: rgba(0, 0, 0, 0.7);
 }
-
-
-
 
 @media screen and (min-width: 1024px) {
   body {

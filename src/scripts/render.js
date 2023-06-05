@@ -1,5 +1,5 @@
 import { posts } from "./database.js";
-
+import {handlePostModal} from "./modal.js"
 
 export function createUserCard(array) {
   const userItem = document.createElement('div');
